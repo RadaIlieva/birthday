@@ -17,7 +17,7 @@ body {
 img {
   display: block;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -36,12 +36,13 @@ img {
 .message {
   display: none;
   margin-top: 20px;
-  font-size: 20px; /* по-малко за телефон */
+  font-size: 20px; 
   font-weight: bold;
-  color: #d63384;
+  color: white; 
   padding: 0 10px;
   white-space: pre-wrap;
   min-height: 2em;
+  text-shadow: 0 0 5px #000; 
 }
 
 canvas {
@@ -65,7 +66,6 @@ canvas {
   cursor: pointer;
 }
 
-/* Адаптивно за малък екран */
 @media (max-width: 400px) {
   .message { font-size: 16px; }
   #cake, #friend { width: 180px; }
@@ -90,26 +90,30 @@ canvas {
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script>
-// === Конфети ===
 function launchConfetti() {
   const duration = 3000;
   const end = Date.now() + duration;
 
+  const colors = [
+    '#FF0000','#00FF00','#0000FF','#FFFF00','#FF00FF','#00FFFF',
+    '#FFA500','#800080','#FFC0CB','#008000','#00CED1','#FFD700'
+  ];
+
   (function frame() {
     confetti({
-      particleCount: 7,
+      particleCount: 10,
       angle: 60,
-      spread: 55,
+      spread: 60,
       origin: { x: 0 },
-     colors: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'], 
-  scalar: 0.8
+      colors: colors,
+      scalar: 0.8
     });
     confetti({
-      particleCount: 7,
+      particleCount: 10,
       angle: 120,
-      spread: 55,
+      spread: 60,
       origin: { x: 1 },
-      colors: ['rgba(255,0,255,0.5)','rgba(255,255,0,0.5)','rgba(0,255,255,0.5)'],
+      colors: colors,
       scalar: 0.8
     });
 
@@ -117,7 +121,6 @@ function launchConfetti() {
   })();
 }
 
-// === Ефект на пишеща машина ===
 const messages = document.querySelectorAll(".message");
 
 function typeWriter(element, text, speed, callback) {
@@ -156,10 +159,9 @@ function showMessages() {
       friend.style.display = "block";
     }
   }
-  setTimeout(showNextMessage, 500); // започва малко по-бързо
+  setTimeout(showNextMessage, 500);
 }
 
-// === Музика Happy Birthday ===
 const melody = [
   [264, 250],[264, 250],[297,500],[264,500],[352,500],[330,1000],
   [264,250],[264,250],[297,500],[264,500],[396,500],[352,1000],
@@ -184,7 +186,6 @@ function playMelody() {
   });
 }
 
-// === Стартиране ===
 document.getElementById("startBtn").addEventListener("click", () => {
   document.getElementById("startBtn").style.display = "none";
   playMelody();
@@ -193,4 +194,3 @@ document.getElementById("startBtn").addEventListener("click", () => {
 </script>
 </body>
 </html>
-
