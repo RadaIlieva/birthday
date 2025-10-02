@@ -17,7 +17,7 @@ body {
 img {
   display: block;
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 90%;
   height: auto;
 }
 
@@ -101,8 +101,8 @@ function launchConfetti() {
       angle: 60,
       spread: 55,
       origin: { x: 0 },
-      colors: ['rgba(255,0,255,0.5)','rgba(255,255,0,0.5)','rgba(0,255,255,0.5)'],
-      scalar: 0.8
+     colors: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'], 
+  scalar: 0.8
     });
     confetti({
       particleCount: 7,
@@ -193,3 +193,4 @@ document.getElementById("startBtn").addEventListener("click", () => {
 </script>
 </body>
 </html>
+
